@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 数据库更新策略
+            false:启动时检查数据库版本，发生不匹配抛出异常
+            true：启动时自动检查并更新数据库表
+            create-drop:启动时创建数据库表结构，结束时删除
+        -->
+        <property name="databaseSchemaUpdate" value="true" />
+        <property name="dbHistoryUsed" value="true" />
+        <property name="dbIdentityUsed" value="true" />
+        <!--<property name="databaseTablePrefix" value="mox_" />-->
+
+    </bean>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/activity?characterEncoding=utf8&amp;useSSL=true&amp;serverTimezone=UTC" />
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+        <property name="initialSize" value="1"/>
+        <property name="maxActive" value="10" />
+        <property name="filters" value="stat,slf4j"/>
+    </bean>
+
+</beans>

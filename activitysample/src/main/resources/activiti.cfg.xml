@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/activity?characterEncoding=utf8&amp;useSSL=true&amp;serverTimezone=UTC" />
+        <property name="jdbcDriver" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUsername" value="root" />
+        <property name="jdbcPassword" value="qqaazz321" />
+        <!-- 数据库更新策略
+            false:启动时检查数据库版本，发生不匹配抛出异常
+            true：启动时自动检查并更新数据库表
+            create-drop:启动时创建数据库表结构，结束时删除
+        -->
+        <property name="databaseSchemaUpdate" value="true" />
+    </bean>
+
+</beans>
