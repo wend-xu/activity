@@ -7,12 +7,11 @@ public class GetProcessEngine {
     private static ProcessEngine processEngine;
 
     public static ProcessEngine getDefaultProcessEngine(){
-        if (processEngine != null){
-            return  processEngine;
-        }else{
+        if(processEngine == null){
             ProcessEngineConfiguration processEngineConfiguration =
                     ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("activiti.cfg.xml");
-            return processEngineConfiguration.buildProcessEngine();
+            processEngine =  processEngineConfiguration.buildProcessEngine();
         }
+        return processEngine;
     }
 }
