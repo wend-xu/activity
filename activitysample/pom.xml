@@ -9,6 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>activitysample</artifactId>
+    <version>0.0.1</version>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>

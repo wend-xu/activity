@@ -4,7 +4,7 @@
 
     <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
         <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/activity?characterEncoding=utf8&amp;useSSL=true&amp;serverTimezone=UTC" />
-        <property name="jdbcDriver" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcDriver" value="com.mysql.cj.jdbc.Driver" />
         <property name="jdbcUsername" value="root" />
         <property name="jdbcPassword" value="qqaazz321" />
         <!-- 数据库更新策略
