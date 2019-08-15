@@ -17,6 +17,7 @@ public class Dept {
     String deptIdentity;
     @Column(nullable = false)
     String deptName;
+    private boolean active;
 
     public Dept(){
     }

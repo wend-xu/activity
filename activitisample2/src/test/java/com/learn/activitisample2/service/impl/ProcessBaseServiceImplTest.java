@@ -1,9 +1,13 @@
 package com.learn.activitisample2.service.impl;
 
+import com.learn.activitisample2.entity.User;
 import com.learn.activitisample2.service.ProcessBaseService;
 import com.learn.activitisample2.service.ProcessDeployService;
+import com.learn.activitisample2.service.ProcessIdentityService;
+import com.learn.activitisample2.service.ProcessTaskService;
 import com.learn.activitisample2.util.BaseTools;
 import com.learn.activitisample2.util.QueryTool;
+import org.activiti.engine.IdentityService;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.junit.Test;
@@ -21,6 +25,10 @@ public class ProcessBaseServiceImplTest {
     ProcessBaseService processBaseService;
     @Autowired
     ProcessDeployService processDeployService;
+    @Autowired
+    ProcessTaskService processTaskService;
+    @Autowired
+    ProcessIdentityService processIdentityService;
     @Autowired
     BaseTools baseTools;
     @Autowired
@@ -57,5 +65,28 @@ public class ProcessBaseServiceImplTest {
                 e.printStackTrace();
             }
         });
+    }
+
+    @Test
+    public void taskAssignTest(){
+        processTaskService.taskAssign("40005","xiaom");
+    }
+
+    @Test
+    public void replaceAssignAndCandidateTest(){
+        User user = new User();
+        user.setUserIdentity("xiaom");
+        User user1 = new User();
+        user1.setUserIdentity("damm");
+        User user2 = new User();
+        user2.setUserIdentity("chaodammm");
+
+        processIdentityService.replaceAssignUser(user,user1);
+    }
+
+    @Test
+    public void deleteUserTest(){
+        IdentityService identityService = processBaseService.getProcessEngine().getIdentityService();
+        identityService.deleteUser("xiaom");
     }
 }

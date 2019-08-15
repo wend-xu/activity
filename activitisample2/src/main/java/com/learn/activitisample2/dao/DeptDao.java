@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DeptDao extends JpaRepository<Dept, Long>, JpaSpecificationExecutor<Dept> {
+    Dept findByDeptIdentity(String deptIdentity);
 }

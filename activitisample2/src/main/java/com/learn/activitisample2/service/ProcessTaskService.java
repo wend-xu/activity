@@ -21,9 +21,11 @@ public interface ProcessTaskService {
     List<FormProperty> getTaskFormProperties(String taskId);
 
     //分配候选者
-    void taskAddCadidateUser(String taskId,String ... userIdentity);
-    void taskAddCadidateUsers(String taskId,List<String> userIdentitys);
-    void taskAddCadidateDept(String taskId,String ... deptIdentity);
+    void taskAddCandidateUser(String taskId,String ... userIdentities);
+    void taskAddCandidateUsers(String taskId,List<String> userIdentities);
+    void taskAddCandidateDept(String taskId,String ... deptIdentities);
+
+    void taskAssign(String taskId,String userIdentity);
 
     //处理待办任务
     void handleTask(Task task,Map<String,Object> variable);

@@ -17,12 +17,14 @@ public class User {
     private String userIdentity;
     @Column(nullable = false)
     private String userName;
+    private boolean active;
 
     public User() {
     }
 
-    public User(String userIdentity, String userName) {
+    public User(String userIdentity, String userName ,boolean active) {
         this.userIdentity = userIdentity;
         this.userName = userName;
+        this.active = active;
     }
 }

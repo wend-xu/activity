@@ -3,6 +3,7 @@ package com.learn.activitisample2.service.impl;
 import com.learn.activitisample2.service.ProcessBaseService;
 import com.learn.activitisample2.service.ProcessTaskService;
 import com.learn.activitisample2.util.QueryTool;
+import org.activiti.engine.ActivitiTaskAlreadyClaimedException;
 import org.activiti.engine.FormService;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.TaskService;
@@ -11,7 +12,9 @@ import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -70,27 +73,36 @@ public class ProcessTaskServiceImpl implements ProcessTaskService{
     }
 
     @Override
-    public void taskAddCadidateUser(String taskId, String... userIdentity) {
-        Task task = getTaskById(taskId);
+    public void taskAddCandidateUser(String taskId, String... userIdentities) {
+        for(String userIdentity:userIdentities){
+            taskService.addCandidateUser(taskId,userIdentity);
+        }
     }
 
     @Override
-    public void taskAddCadidateUsers(String taskId, List<String> userIdentitys) {
-
+    public void taskAddCandidateUsers(String taskId, List<String> userIdentities) {
+        userIdentities.forEach(userIdentity -> taskService.addCandidateUser(taskId,userIdentity));
     }
 
     @Override
-    public void taskAddCadidateDept(String taskId, String... deptIdentity) {
+    public void taskAddCandidateDept(String taskId, String... deptIdentities) {
+        for(String deptIdentity:deptIdentities){
+            taskService.addCandidateGroup(taskId,deptIdentity);
+        }
+    }
 
+    @Override
+    public void taskAssign(String taskId, String userIdentity) {
+        taskService.claim(taskId,userIdentity);
     }
 
     @Override
     public void handleTask(Task task, Map<String, Object> variable) {
-
+        taskService.complete(task.getId(),variable);
     }
 
     @Override
     public void handleTask(String taskId, Map<String, Object> variable) {
-
+        taskService.complete(taskId,variable);
     }
 }
