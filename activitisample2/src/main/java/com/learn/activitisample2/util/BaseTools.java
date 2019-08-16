@@ -40,4 +40,14 @@ public class BaseTools {
         System.out.println(">>>>>>>>>>>>>>>>>> PARSE END >>>>>>>>>>>>>>>>>>");
         return map;
     }
+
+    public Map<String,Object> outputEntityInfo2(Object entity){
+        Map<String,Object> result = null;
+        try {
+            result = outputEntityInfo(entity);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

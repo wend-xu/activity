@@ -12,7 +12,8 @@ public interface ProcessDeployService {
 
     //获取流程定义
     ProcessDefinition getProcessDefinition(String processDefintionId);
-    ProcessDefinition getProcessDefinition(String processDefintionKey,int version);
+    ProcessDefinition getProcessDefinitionByDeploymentId(String deploymentId);
+    ProcessDefinition getProcessDefinitionByKeyAndVersion(String processDefintionKey, int version);
     List<ProcessDefinition> getProcessDefinitionsByKey(int page,int size,String processDefinitionKey);
 
     //挂起流程定义

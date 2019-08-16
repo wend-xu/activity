@@ -64,12 +64,17 @@ public class ProcessDeployServiceImpl implements ProcessDeployService{
       processDefinition.getId():myProcess:3:7504
       processDefinition.getVersion():3 */
     @Override
-    public ProcessDefinition getProcessDefinition(String processDefintionId) {
-        return processDefinitionQuery.processDefinitionId(processDefintionId).singleResult();
+    public ProcessDefinition getProcessDefinition(String processDefinitionId) {
+        return processDefinitionQuery.processDefinitionId(processDefinitionId).singleResult();
     }
 
     @Override
-    public ProcessDefinition getProcessDefinition(String processDefintionKey, int version) {
+    public ProcessDefinition getProcessDefinitionByDeploymentId(String deploymentId) {
+        return processDefinitionQuery.deploymentId(deploymentId).singleResult();
+    }
+
+    @Override
+    public ProcessDefinition getProcessDefinitionByKeyAndVersion(String processDefintionKey, int version) {
         return processDefinitionQuery.
                 processDefinitionKey(processDefintionKey).processDefinitionVersion(version).singleResult();
     }
