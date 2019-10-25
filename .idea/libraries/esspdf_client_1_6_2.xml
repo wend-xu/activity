@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="esspdf-client-1.6.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/activitysample/src/build/esspdf-client-1.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/activitysample/src/build/jackson-all-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/activitysample/src/build/jackson-module-jaxb-annotations-2.0.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
